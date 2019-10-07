@@ -1,0 +1,12 @@
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "2x5-kc-Zku"; */
+"2x5-kc-Zku.title" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Select"; ObjectID = "E9f-hH-07d"; */
+"E9f-hH-07d.normalTitle" = "Select";
+
+/* Class = "UITextField"; placeholder = "Input your tags expression here"; ObjectID = "Ngt-P2-zlX"; */
+"Ngt-P2-zlX.placeholder" = "Input your tags expression here";
+
+/* Class = "UINavigationItem"; title = "Abstore"; ObjectID = "pJl-US-sP1"; */
+"pJl-US-sP1.title" = "Abstore";

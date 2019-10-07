@@ -1,0 +1,24 @@
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "2x5-kc-Zku"; */
+"2x5-kc-Zku.title" = "Back";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Cz2-oe-Bwq"; */
+"Cz2-oe-Bwq.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Select"; ObjectID = "E9f-hH-07d"; */
+"E9f-hH-07d.normalTitle" = "Select";
+
+/* Class = "UITableViewController"; title = "Tags"; ObjectID = "GGA-Vq-UUT"; */
+"GGA-Vq-UUT.title" = "Tags";
+
+/* Class = "UITextField"; placeholder = "Input your tags expression here"; ObjectID = "Ngt-P2-zlX"; */
+"Ngt-P2-zlX.placeholder" = "Input your tags expression here";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "cEu-pw-7ff"; */
+"cEu-pw-7ff.normalTitle" = "+";
+
+/* Class = "UIButton"; normalTitle = "Tags"; ObjectID = "dIZ-lf-3me"; */
+"dIZ-lf-3me.normalTitle" = "Tags";
+
+/* Class = "UINavigationItem"; title = "Abstore"; ObjectID = "pJl-US-sP1"; */
+"pJl-US-sP1.title" = "Abstore";
