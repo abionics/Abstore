@@ -50,8 +50,8 @@ class Storage {
             }
         }
         
-        basetag = try! tags.getOrCreate(name: "***Basetag***", color: UIColor.black)
-        untagged = try! tags.getOrCreate(name: "***Untagged***", color: UIColor.black)
+        basetag = try! tags.getOrCreate(name: "***Basetag***", color: UIColor.black, protected: true)
+        untagged = try! tags.getOrCreate(name: "***Untagged***", color: UIColor.black, protected: true)
     }
     
     func initInfiles() {

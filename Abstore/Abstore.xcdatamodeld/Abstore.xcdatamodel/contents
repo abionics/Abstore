@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18G84" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Infile" representedClassName=".Infile" syncable="YES">
         <attribute name="creationDateRV" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="modificationDateRV" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -10,10 +10,11 @@
         <attribute name="aliasesRV" attributeType="Transformable" syncable="YES"/>
         <attribute name="colorRV" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="protected" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="infiles" toMany="YES" deletionRule="Nullify" destinationEntity="Infile" inverseName="tags" inverseEntity="Infile" syncable="YES"/>
     </entity>
     <elements>
         <element name="Infile" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Tag" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Tag" positionX="208.06640625" positionY="0.0859375" width="128" height="120"/>
     </elements>
 </model>

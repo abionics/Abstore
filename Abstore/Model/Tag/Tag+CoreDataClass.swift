@@ -21,7 +21,7 @@ public class Tag: NSManagedObject {
         get { return (aliasesRV as! [String]).sorted() }
     }
     
-    convenience init(name: String, color: UIColor) {
+    convenience init(name: String, color: UIColor, protected: Bool) {
         print("[CoreData][Info] Add tag \"\(name)\" to database")
         let context = CoreDataManager.context
         let entity = NSEntityDescription.entity(forEntityName: "Tag", in: context)
@@ -29,6 +29,7 @@ public class Tag: NSManagedObject {
         
         self.name = name
         self.color = color
+        self.protected = protected
         self.aliasesRV = [] as NSObject
         self.infiles = []
     }

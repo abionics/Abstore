@@ -19,15 +19,15 @@ class TagsKeeper {
         }
     }
     
-    private func create(name: String, color: UIColor) throws -> Tag {
+    private func create(name: String, color: UIColor, protected: Bool) throws -> Tag {
         let name = try normalizeAndCheckName(name: name)
-        let tag = Tag(name: name, color: color)
+        let tag = Tag(name: name, color: color, protected: protected)
         add(tag)
         return tag
     }
     
-    func getOrCreate(name: String, color: UIColor = Constants.DEFAULT_COLOR) throws -> Tag {
-        return try list[name] ?? create(name: name, color: color)
+    func getOrCreate(name: String, color: UIColor = Constants.DEFAULT_COLOR, protected: Bool = false) throws -> Tag {
+        return try list[name] ?? create(name: name, color: color, protected: protected)
     }
     
     func get(name: String) -> Tag? {
@@ -49,7 +49,7 @@ class TagsKeeper {
     
     func fit() {
         for tag in [Tag](list.values) {
-            if tag.infiles.count == 0 {
+            if !tag.protected && tag.infiles.count == 0 {
                 delete(tag: tag)
             }
         }

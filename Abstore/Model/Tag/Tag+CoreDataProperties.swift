@@ -1,8 +1,8 @@
 //
-//  Tag+CoreDataProperties.swift
+//  Infile+CoreDataProperties.swift
 //  Abstore
 //
-//  Created by Abionics on 8/16/19.
+//  Created by Abionics on 10/8/19.
 //  Copyright © 2019 Abionics. All rights reserved.
 //
 //
@@ -19,6 +19,7 @@ extension Tag {
 
     @NSManaged public var name: String
     @NSManaged public var colorRV: Int32
+    @NSManaged public var protected: Bool
     @NSManaged public var aliasesRV: NSObject
     @NSManaged public var infiles: NSSet
 
