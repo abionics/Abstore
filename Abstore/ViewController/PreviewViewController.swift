@@ -27,11 +27,12 @@ class PreviewViewController: UIViewController {
         }
 
         tagsView.setup(infiles: [infile])
+        tagsView.suggestionSetup(view: self.view)
         drag = DragListener(controller: self, content: imageView!)
         navigationController?.navigationBar.isHidden = false
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func showOriginalImage() {
@@ -63,21 +64,21 @@ class PreviewViewController: UIViewController {
         drag.dismiss(state: sender.state, translation: translation, dismiss: dismiss)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.height == UIScreen.main.bounds.height {
-            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - keyboardFrame.height - SuggestionViewController.HEIGHT)
-        }
-    }
-    @objc func keyboardWillHide(notification: NSNotification) {
-        print("hide")
-        guard let userInfo = notification.userInfo else { return }
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.height != UIScreen.main.bounds.height {
-            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height + keyboardFrame.height + SuggestionViewController.HEIGHT)
-        }
-    }
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        guard let userInfo = notification.userInfo else { return }
+//        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+//        let keyboardFrame = keyboardSize.cgRectValue
+//        if self.view.frame.height == UIScreen.main.bounds.height {
+//            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - keyboardFrame.height - SuggestionViewController.HEIGHT)
+//        }
+//    }
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        print("hide")
+//        guard let userInfo = notification.userInfo else { return }
+//        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+//        let keyboardFrame = keyboardSize.cgRectValue
+//        if self.view.frame.height != UIScreen.main.bounds.height {
+//            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height + keyboardFrame.height + SuggestionViewController.HEIGHT)
+//        }
+//    }
 }

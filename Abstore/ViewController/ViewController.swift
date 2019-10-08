@@ -16,6 +16,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var tagsView: TagsViewController!
     @IBOutlet weak var tagsViewHeight: NSLayoutConstraint!
     @IBOutlet weak var suggestionView: SuggestionViewController!
+    @IBOutlet weak var suggestionViewHeight: NSLayoutConstraint!
+    
     
     static var instance: ViewController?
     
@@ -33,6 +35,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.dataSource = self
         collectionView.delegate = self
         searchField.delegate = self
+        
+        suggestionView.setup(field: searchField, view: self.view, height: suggestionViewHeight)
+        searchField.addTarget(self, action: #selector(searchFieldEditing), for: .editingDidBegin)
+        searchField.addTarget(self, action: #selector(searchFieldEdited), for: .editingChanged)
+        
+        tagsView.suggestionSetup(view: self.view)
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -57,11 +65,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func start() {
         storage = Storage.instance
         search(expression: "")
-        
-        suggestionView.setup(field: searchField, controller: self)
-        searchField.addTarget(self, action: #selector(searchFieldEditing), for: .editingDidBegin)
-        searchField.addTarget(self, action: #selector(searchFieldEdited), for: .editingChanged)
-        searchFieldEdited(searchField)
     }
     @objc func searchFieldEditing(_ field: UITextField) {
         suggestionView.refresh()

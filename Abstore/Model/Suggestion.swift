@@ -53,7 +53,7 @@ class Suggestion {
     func suggest(normalized text: String) -> [(value: String, from: Int)] {
         print("search '\(text)'")
         var suggestions = [(String, Int)]()
-        var from = 0
+        var from = -1
         var pattern = " " + text
         while let spaceIndex = pattern.firstIndex(of: " ") {
             let index = pattern.index(spaceIndex, offsetBy: 1)

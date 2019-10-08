@@ -12,6 +12,8 @@ class TagsViewController: UIView, UICollectionViewDataSource, UICollectionViewDe
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var suggestionView: SuggestionViewController!
+    @IBOutlet weak var suggestionViewHeight: NSLayoutConstraint!
     
     let BACKGROUND_ALPHA: CGFloat = 0.5
     
@@ -42,7 +44,6 @@ class TagsViewController: UIView, UICollectionViewDataSource, UICollectionViewDe
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "TagCell")
         
         textField.delegate = self
-        textField.autocorrectionType = .no
         
         setup(infiles: [])
     }
@@ -95,6 +96,18 @@ class TagsViewController: UIView, UICollectionViewDataSource, UICollectionViewDe
         collectionView.reloadData()
     }
     
+    func suggestionSetup(view: UIView) {
+        suggestionView.setup(field: textField, view: view, height: suggestionViewHeight)
+        textField.addTarget(self, action: #selector(searchFieldEditing), for: .editingDidBegin)
+        textField.addTarget(self, action: #selector(searchFieldEdited), for: .editingChanged)
+    }
+    @objc func searchFieldEditing(_ field: UITextField) {
+        suggestionView.refresh()
+    }
+    @objc func searchFieldEdited(_ field: UITextField) {
+        suggestionView.suggest(text: field.text!)
+    }
+    
     @IBAction func addTag(_ sender: UITextField) {
         let name = sender.text!
         for infile in infiles {
@@ -136,7 +149,7 @@ class TagsViewController: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("text return")
-        endEditing(true)
+        textField.endEditing(true)
         return false
     }
 }

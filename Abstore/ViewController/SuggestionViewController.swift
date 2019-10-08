@@ -16,7 +16,9 @@ class SuggestionViewController: UIView {
     
     var field: UITextField!
     var view: UIView!
+    var height: NSLayoutConstraint!
     var suggestion: Suggestion!
+    var upped: CGFloat = 0
     var result = [(value: String, from: Int)]()
 
     override init(frame: CGRect) {
@@ -33,7 +35,7 @@ class SuggestionViewController: UIView {
         print("init")
         Bundle.main.loadNibNamed("SuggestionView", owner: self, options: nil)
         addSubview(contentView)
-        SuggestionViewController.HEIGHT = contentView.bounds.height
+        SuggestionViewController.HEIGHT = contentView.bounds.height //todo frame
         
         for i in 0...COUNT - 1 {
             let button = contentView.viewWithTag(i) as! UIButton
@@ -44,10 +46,12 @@ class SuggestionViewController: UIView {
         }
     }
     
-    func setup(field: UITextField, controller: UIViewController) {
+    func setup(field: UITextField, view: UIView, height: NSLayoutConstraint) {
         self.field = field
-        self.view = controller.view
+        self.view = view
+        self.height = height
         field.autocorrectionType = .no
+        height.constant = 0
         isHidden = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -91,24 +95,34 @@ class SuggestionViewController: UIView {
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        print("SUGGEST")
-        isHidden = false
-//        self.frame.size = CGSize(width: self.frame.size.width, height: SuggestionViewController.HEIGHT)
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.height == UIScreen.main.bounds.height {
-            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - keyboardFrame.height)
+        if field.isEditing {
+            print("SUGGEST")
+            if self.view.frame.height == UIScreen.main.bounds.height {
+                suggest(text: field.text!)
+                let keyboardFrame = keyboardSize.cgRectValue
+                upped = keyboardFrame.height
+                print("upped: ", upped)
+                
+                isHidden = false
+                self.height.constant = SuggestionViewController.HEIGHT
+                self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - upped)
+            }
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
-        isHidden = true
-//        self.frame.size = CGSize(width: self.frame.size.width, height: 0)
         guard let userInfo = notification.userInfo else { return }
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.height != UIScreen.main.bounds.height {
-            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height + keyboardFrame.height)
+        guard let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        if field.isEditing {
+            print("SUGGEST hidee")
+            if self.view.frame.height != UIScreen.main.bounds.height {
+                field.autocorrectionType = .no
+                
+                isHidden = true
+                self.height.constant = 0
+                self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height + upped)
+            }
         }
     }
     
