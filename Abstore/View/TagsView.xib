@@ -47,20 +47,10 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L27-be-poT" customClass="SuggestionViewController" customModule="Abstore" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="667" width="375" height="40"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="35E-Jl-W4O"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="0.32156862745098042" green="0.45098039215686275" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="L27-be-poT" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" id="3ri-0G-X0j"/>
-                <constraint firstItem="L27-be-poT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8sZ-Hs-SOG"/>
                 <constraint firstAttribute="trailing" secondItem="yvd-55-OLv" secondAttribute="trailing" constant="10" id="BYS-cL-2Fo"/>
-                <constraint firstAttribute="bottom" secondItem="L27-be-poT" secondAttribute="bottom" constant="-40" id="DQ1-KU-4rm"/>
                 <constraint firstItem="1hh-Lo-1HO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="MF3-22-hv2"/>
                 <constraint firstItem="yvd-55-OLv" firstAttribute="top" secondItem="1hh-Lo-1HO" secondAttribute="bottom" constant="10" id="PPq-47-Z3a"/>
                 <constraint firstItem="1hh-Lo-1HO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="PUw-dC-509"/>

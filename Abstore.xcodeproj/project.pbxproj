@@ -45,6 +45,7 @@
 		D7715A2F234346AD00EB0D88 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7715A2E234346AD00EB0D88 /* SettingsViewController.swift */; };
 		D79FC9D9234A1C2E00B29E80 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FC9D7234A1C2E00B29E80 /* SuggestionViewController.swift */; };
 		D79FC9DA234A1C2E00B29E80 /* SuggestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D79FC9D8234A1C2E00B29E80 /* SuggestionView.xib */; };
+		D79FC9E0234BDF0A00B29E80 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FC9DF234BDF0900B29E80 /* Suggestion.swift */; };
 		D7BC5D1F230D1FCD00532C98 /* TagsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7BC5D1E230D1FCD00532C98 /* TagsView.xib */; };
 		D7BC5D21230D210F00532C98 /* TagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC5D20230D210F00532C98 /* TagsViewController.swift */; };
 		D7BC5D25230D571200532C98 /* UIButton+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC5D24230D571200532C98 /* UIButton+Events.swift */; };
@@ -96,6 +97,7 @@
 		D7715A2E234346AD00EB0D88 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D79FC9D7234A1C2E00B29E80 /* SuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		D79FC9D8234A1C2E00B29E80 /* SuggestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionView.xib; sourceTree = "<group>"; };
+		D79FC9DF234BDF0900B29E80 /* Suggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		D7BC5D1E230D1FCD00532C98 /* TagsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsView.xib; sourceTree = "<group>"; };
 		D7BC5D20230D210F00532C98 /* TagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewController.swift; sourceTree = "<group>"; };
 		D7BC5D24230D571200532C98 /* UIButton+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Events.swift"; sourceTree = "<group>"; };
@@ -165,12 +167,12 @@
 				D760BAE12305E5810064B0C8 /* ViewController.swift */,
 				D71F2893230A98470007AF9C /* PreviewViewController.swift */,
 				D7BC5D20230D210F00532C98 /* TagsViewController.swift */,
-				D79FC9D7234A1C2E00B29E80 /* SuggestionViewController.swift */,
 				D70E20A82317B3C900CE660C /* FullscreenImageViewController.swift */,
 				D7644322231D38760078042B /* DragListener.swift */,
 				D7144DC42326300E00FEED5E /* TagsTableViewController.swift */,
 				D7144DD0232644A100FEED5E /* TagsTableViewCell.swift */,
 				D7715A2E234346AD00EB0D88 /* SettingsViewController.swift */,
+				D79FC9D7234A1C2E00B29E80 /* SuggestionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -249,6 +251,7 @@
 				D71F287E23073B270007AF9C /* Constants.swift */,
 				D71F288F2309A8E50007AF9C /* PreviewImage.swift */,
 				D71F288B230989700007AF9C /* SimpleTimer.swift */,
+				D79FC9DF234BDF0900B29E80 /* Suggestion.swift */,
 				D760BB052305E9430064B0C8 /* Tag */,
 				D760BB042305E93E0064B0C8 /* Infile */,
 			);
@@ -386,6 +389,7 @@
 				D760BAE22305E5810064B0C8 /* ViewController.swift in Sources */,
 				D7BC5D25230D571200532C98 /* UIButton+Events.swift in Sources */,
 				D71F288623082FFB0007AF9C /* PHAsset+filename.swift in Sources */,
+				D79FC9E0234BDF0A00B29E80 /* Suggestion.swift in Sources */,
 				D7144DC52326300E00FEED5E /* TagsTableViewController.swift in Sources */,
 				D760BB0C2305EA850064B0C8 /* InfilesKeeper.swift in Sources */,
 				D71F288E2309919D0007AF9C /* UICollectionView+ scrollToBottom.swift in Sources */,

@@ -225,9 +225,17 @@
                                     <action selector="addPress:" destination="VBF-K5-qUz" eventType="touchUpInside" id="iiE-ke-YAg"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnp-Yy-CoK" customClass="SuggestionViewController" customModule="Abstore" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="IJ1-cN-50Z"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.3921568627" green="0.62745098040000002" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="v4m-ea-8L3" firstAttribute="bottom" secondItem="Vnp-Yy-CoK" secondAttribute="bottom" id="3vg-Qb-c54"/>
                             <constraint firstItem="Pzn-B7-JEa" firstAttribute="top" secondItem="Ngt-P2-zlX" secondAttribute="bottom" constant="10" id="441-Y1-CZB"/>
                             <constraint firstItem="dFf-dJ-2SW" firstAttribute="top" secondItem="Pzn-B7-JEa" secondAttribute="bottom" id="4GT-Dq-mA3"/>
                             <constraint firstItem="Ngt-P2-zlX" firstAttribute="leading" secondItem="v4m-ea-8L3" secondAttribute="leading" constant="10" id="4ov-84-oJ7"/>
@@ -236,10 +244,12 @@
                             <constraint firstItem="v4m-ea-8L3" firstAttribute="trailing" secondItem="cEu-pw-7ff" secondAttribute="trailing" constant="10" id="C7K-pd-AO7"/>
                             <constraint firstItem="cEu-pw-7ff" firstAttribute="leading" secondItem="Ngt-P2-zlX" secondAttribute="trailing" constant="10" id="EXw-Dy-B4U"/>
                             <constraint firstItem="v4m-ea-8L3" firstAttribute="trailing" secondItem="Pzn-B7-JEa" secondAttribute="trailing" id="Eje-GI-ZoY"/>
+                            <constraint firstItem="Vnp-Yy-CoK" firstAttribute="centerX" secondItem="LNT-bB-FpC" secondAttribute="centerX" id="EoQ-gO-lkG"/>
                             <constraint firstItem="dFf-dJ-2SW" firstAttribute="leading" secondItem="v4m-ea-8L3" secondAttribute="leading" id="JKo-it-ZIL"/>
                             <constraint firstItem="cEu-pw-7ff" firstAttribute="top" secondItem="v4m-ea-8L3" secondAttribute="top" constant="10" id="Mnq-kK-Hx1"/>
                             <constraint firstItem="v4m-ea-8L3" firstAttribute="bottom" secondItem="dFf-dJ-2SW" secondAttribute="bottom" id="NQt-Ow-C2V"/>
                             <constraint firstItem="Pzn-B7-JEa" firstAttribute="leading" secondItem="v4m-ea-8L3" secondAttribute="leading" id="cu7-14-9Ct"/>
+                            <constraint firstItem="Vnp-Yy-CoK" firstAttribute="width" secondItem="v4m-ea-8L3" secondAttribute="width" id="cvL-JC-eYw"/>
                             <constraint firstItem="Ngt-P2-zlX" firstAttribute="top" secondItem="v4m-ea-8L3" secondAttribute="top" constant="10" id="r6N-JO-Qp4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v4m-ea-8L3"/>
@@ -286,6 +296,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Pzn-B7-JEa" id="nRv-6u-tUx"/>
                         <outlet property="searchField" destination="Ngt-P2-zlX" id="a0X-ux-e7a"/>
+                        <outlet property="suggestionView" destination="Vnp-Yy-CoK" id="efF-zs-sPL"/>
                         <outlet property="tagsView" destination="dFf-dJ-2SW" id="7bI-yO-0Zq"/>
                         <outlet property="tagsViewHeight" destination="tGI-Ly-C6z" id="IPd-SC-LoY"/>
                     </connections>

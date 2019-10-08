@@ -15,7 +15,8 @@ class Parser {
          Character(","): (2, { $0.union($1) })]
     private static let replaces = ["&&": " ",
                            "||": ",",
-                           ", ": ","]
+                           ", ": ",",
+                           " ,": ","]
     static var reserved: [String] {
         get {
             var reserved = [String](Parser.replaces.keys) + [String](Parser.replaces.values)

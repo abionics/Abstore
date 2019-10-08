@@ -15,6 +15,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var tagsView: TagsViewController!
     @IBOutlet weak var tagsViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var suggestionView: SuggestionViewController!
     
     static var instance: ViewController?
     
@@ -33,16 +34,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.delegate = self
         searchField.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         PHPhotoLibrary.requestAuthorization { (status) in
             switch status {
             case PHAuthorizationStatus.authorized:
                 DispatchQueue.main.async {
-                    self.storage = Storage.instance
-                    self.search(expression: "")
+                    self.start()
                 }
             case PHAuthorizationStatus.denied, PHAuthorizationStatus.restricted:
                 print("[Main][Warning] Access to gallery is denied/restricted by user")
@@ -53,6 +52,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             default: break
             }
         }
+    }
+    
+    func start() {
+        storage = Storage.instance
+        search(expression: "")
+        
+        suggestionView.setup(field: searchField, controller: self)
+        searchField.addTarget(self, action: #selector(searchFieldEditing), for: .editingDidBegin)
+        searchField.addTarget(self, action: #selector(searchFieldEdited), for: .editingChanged)
+        searchFieldEdited(searchField)
+    }
+    @objc func searchFieldEditing(_ field: UITextField) {
+        suggestionView.refresh()
+    }
+    @objc func searchFieldEdited(_ field: UITextField) {
+        suggestionView.suggest(text: field.text!)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -188,22 +203,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.height == UIScreen.main.bounds.height {
-            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - keyboardFrame.height)
-        }
-    }
-    @objc func keyboardWillHide(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        let keyboardFrame = keyboardSize.cgRectValue
-        if self.view.frame.height != UIScreen.main.bounds.height {
-            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height + keyboardFrame.height)
-        }
-    }
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        guard let userInfo = notification.userInfo else { return }
+//        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+//        let keyboardFrame = keyboardSize.cgRectValue
+//        if self.view.frame.height == UIScreen.main.bounds.height {
+//            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - keyboardFrame.height)
+//        }
+//    }
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        guard let userInfo = notification.userInfo else { return }
+//        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+//        let keyboardFrame = keyboardSize.cgRectValue
+//        if self.view.frame.height != UIScreen.main.bounds.height {
+//            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height + keyboardFrame.height)
+//        }
+//    }
 }
 
 enum ActionType {
