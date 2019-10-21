@@ -42,9 +42,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         tagsView.suggestionSetup(view: self.view)
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
         PHPhotoLibrary.requestAuthorization { (status) in
             switch status {
             case PHAuthorizationStatus.authorized:
@@ -205,23 +202,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.view.layoutIfNeeded()
         }
     }
-    
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        guard let userInfo = notification.userInfo else { return }
-//        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-//        let keyboardFrame = keyboardSize.cgRectValue
-//        if self.view.frame.height == UIScreen.main.bounds.height {
-//            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height - keyboardFrame.height)
-//        }
-//    }
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        guard let userInfo = notification.userInfo else { return }
-//        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-//        let keyboardFrame = keyboardSize.cgRectValue
-//        if self.view.frame.height != UIScreen.main.bounds.height {
-//            self.view.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height + keyboardFrame.height)
-//        }
-//    }
 }
 
 enum ActionType {
